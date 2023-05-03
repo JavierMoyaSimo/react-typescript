@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { type State } from "./types";
+import { type Action, type State } from "./types";
 
 // 1-  Crear ESTADO INICIAL
 // Lenguaje inicial, Lenguaje Destino, Texto inicial, Texto traducido, cargando?...
@@ -14,9 +14,9 @@ const initialState: State = {
 };
 
 //2-Crear  REDUCER
-function reducer(state: State, action) {
+function reducer(state: State, action: Action) {
   //Recuperamos el TIPO de accion y el PAYLOAD(informacion que envia la accion)
-  const { type, payload } = action;
+  const { type } = action;
 
   //Si el tipo es "INTERCHANGE_LANGUAGES": devuelves el estado que teniamos anteriormente,
   // e intercambiamos el estado de "fromLanguage" por el de "toLanguage"
@@ -32,7 +32,7 @@ function reducer(state: State, action) {
   if (type === "SET_FROM_LANGUAGE") {
     return {
       ...state,
-      fromLanguage: payload,
+      fromLanguage: action.payload,
     };
   }
 
@@ -40,7 +40,7 @@ function reducer(state: State, action) {
   if (type === "SET_TO_LANGUAGE") {
     return {
       ...state,
-      toLanguage: payload,
+      toLanguage: action.payload,
     };
   }
 
@@ -48,7 +48,7 @@ function reducer(state: State, action) {
   if (type === "SET_FROM_TEXT") {
     return {
       ...state,
-      fromText: payload,
+      fromText: action.payload,
       loading: true,
       result: "",
     };
@@ -58,7 +58,7 @@ function reducer(state: State, action) {
   if (type === "SET_RESULT") {
     return {
       ...state,
-      result: payload,
+      result: action.payload,
       loading: false,
     };
   }
