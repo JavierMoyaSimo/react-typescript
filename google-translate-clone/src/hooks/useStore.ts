@@ -65,6 +65,7 @@ function reducer(state: State, action: Action) {
 
 export function useStore() {
     // 3- Usar Hook useReducer
+    //Toma un reductor y un estado inicial, y devuelve el estado actual y una función de despacho para enviar acciones al reductor.
     const [{ fromLanguage, toLanguage, fromText, result, loading }, dispatch] =
         useReducer(reducer, initialState);
 
