@@ -30,6 +30,6 @@ export type Language = keyof typeof SUPPORTED_LANGUAGES
 //TIPO DE AUTOLENGUAJE
 export type AutoLanguage = typeof AUTO_LANGUAGE
 
-//TIPO DE LENGUAJE EN EL FromLanguage
+//TIPO DE LENGUAJE EN  FromLanguage
 
 export type FromLanguage = Language | AutoLanguage
