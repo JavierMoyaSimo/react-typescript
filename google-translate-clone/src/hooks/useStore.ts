@@ -19,6 +19,11 @@ function reducer(state: State, action: Action) {
     //Si el tipo es "INTERCHANGE_LANGUAGES": devuelves el estado que teniamos anteriormente,
     // e intercambiamos el estado de "fromLanguage" por el de "toLanguage"
     if (type === "INTERCHANGE_LANGUAGES") {
+        //Lógica del estado dentro del Reducer
+        //Así evitamos introducirla en los componentes
+        
+        //Si el estado es auto, devuélveme el Estado Inicial, es decir, NO INTERCAMBIES Lenguajes
+        if(state.fromLanguage === "auto"){return state}
         return {
             ...state,
             fromLanguage: state.toLanguage,
