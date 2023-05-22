@@ -1,3 +1,4 @@
+import { AUTO_LANGUAGE } from "../constants";
 import { FromLanguage, type Action, type State, Language } from "../types";
 import { useReducer } from "react";
 
@@ -23,7 +24,7 @@ function reducer(state: State, action: Action) {
         //Así evitamos introducirla en los componentes
         
         //Si el estado es auto, devuélveme el Estado Inicial, es decir, NO INTERCAMBIES Lenguajes
-        if(state.fromLanguage === "auto"){return state}
+        if(state.fromLanguage === AUTO_LANGUAGE){return state}
         return {
             ...state,
             fromLanguage: state.toLanguage,
