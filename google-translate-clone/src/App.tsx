@@ -9,7 +9,7 @@ import { LanguageSelector } from "./components/LanguageSelector";
 function App() {
   //Importamos el useStore de nuestros customs hooks.
   //Con él, traemos el fromLanguage y el interchangeLanguages para hacer el dispatch de la accion con el payload "es"
-  const { fromLanguage, toLanguage, setFromLanguage, setToLanguage interchangeLanguages } = useStore();
+  const { fromLanguage, toLanguage, setFromLanguage, setToLanguage ,interchangeLanguages } = useStore();
 
   return (
     <Container fluid>
