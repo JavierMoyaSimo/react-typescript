@@ -1,21 +1,29 @@
 import { Form } from "react-bootstrap";
-import { SUPPORTED_LANGUAGES } from "../constants";
-import { Language } from "../types";
+import { AUTO_LANGUAGE, SUPPORTED_LANGUAGES } from "../constants";
+import { FromLanguage, Language } from "../types";
 
 //void significa que no devuelve nada
-interface Props {
-  onChange: (language: string) => void;
-}
+//Tenemos 2 contratos diferentes para las mismas Props, dependiendo del string que le pasamos como type
+type Props =
+  | {
+      type: "from";
+      value: FromLanguage;
+      onChange: (language: FromLanguage) => void;
+    }
+  | { type: "to"; value: Language; onChange: (language: Language) => void };
 
-
-export const LanguageSelector = ({ onChange }: Props) => {
-
+export const LanguageSelector = ({ onChange, type, value }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(event.target.value as Language)
-  }
+    onChange(event.target.value as Language);
+  };
 
   return (
-    <Form.Select aria-label="Selecciona el idioma" onChange={handleChange}>
+    <Form.Select
+      aria-label="Selecciona el idioma"
+      onChange={handleChange}
+      value={value}
+    >
+      {type === "from" && <option value={AUTO_LANGUAGE}>Detectar idioma</option>}
       {Object.entries(SUPPORTED_LANGUAGES).map(([key, literal]) => (
         <option key={key} value={key}>
           {literal}
