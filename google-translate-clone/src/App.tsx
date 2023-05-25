@@ -5,8 +5,10 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { AUTO_LANGUAGE } from "./constants";
 import { ArrowsIcon } from "./components/Icons";
 import { LanguageSelector } from "./components/LanguageSelector";
+import { SectionType } from "./types.d";
 
 function App() {
+
   //Importamos el useStore de nuestros customs hooks.
   //Con él, traemos el fromLanguage y el interchangeLanguages para hacer el dispatch de la accion con el payload "es"
   const {
@@ -24,7 +26,7 @@ function App() {
       <Row>
         <Col>
           <LanguageSelector
-            type="from"
+            type={SectionType.From}
             value={fromLanguage}
             onChange={setFromLanguage}
           />
@@ -40,7 +42,7 @@ function App() {
         </Col>
         <Col>
           <LanguageSelector
-            type="to"
+            type={SectionType.To}
             value={toLanguage}
             onChange={setToLanguage}
           />

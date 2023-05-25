@@ -33,3 +33,9 @@ export type AutoLanguage = typeof AUTO_LANGUAGE
 //TIPO DE LENGUAJE EN  FromLanguage
 
 export type FromLanguage = Language | AutoLanguage
+
+// ENUM para tipo de Section
+export enum SectionType {
+    From = "from",
+    To = "to"
+}
